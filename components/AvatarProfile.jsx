@@ -1,13 +1,7 @@
 import React from 'react';
-import { User } from '../types';
 import { Flame, Crown, Hexagon } from 'lucide-react';
 
-interface AvatarProfileProps {
-  user: User;
-  onAvatarClick?: () => void;
-}
-
-const AvatarProfile: React.FC<AvatarProfileProps> = ({ user, onAvatarClick }) => {
+const AvatarProfile = ({ user, onAvatarClick }) => {
   return (
     <div className="avatar-frame sticky top-4 z-40 mx-4 mb-6">
       <div className="bg-white rounded-2xl p-3 shadow-card border-2 border-gray-100 flex items-center justify-between max-w-2xl mx-auto backdrop-blur-sm bg-opacity-95">
