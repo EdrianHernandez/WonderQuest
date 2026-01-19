@@ -1,16 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Quiz } from '../types';
 import { CheckCircle2, XCircle, ChevronRight, RefreshCcw } from 'lucide-react';
 
-interface QuizInterfaceProps {
-  quiz: Quiz;
-  onComplete: (score: number) => void;
-  onExit: () => void;
-}
-
-const QuizInterface: React.FC<QuizInterfaceProps> = ({ quiz, onComplete, onExit }) => {
+const QuizInterface = ({ quiz, onComplete, onExit }) => {
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
-  const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
+  const [selectedOptionId, setSelectedOptionId] = useState(null);
   const [isAnswerChecked, setIsAnswerChecked] = useState(false);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
@@ -18,7 +11,7 @@ const QuizInterface: React.FC<QuizInterfaceProps> = ({ quiz, onComplete, onExit 
   const currentQuestion = quiz.questions[currentQuestionIdx];
   const progress = ((currentQuestionIdx) / quiz.questions.length) * 100;
 
-  const handleOptionSelect = (id: string) => {
+  const handleOptionSelect = (id) => {
     if (isAnswerChecked) return;
     setSelectedOptionId(id);
     
