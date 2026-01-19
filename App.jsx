@@ -1,27 +1,26 @@
 import React, { useState } from 'react';
 import { INITIAL_USER, LESSONS, BADGES, MOCK_QUIZ } from './constants';
-import { User, Lesson } from './types';
 import AvatarProfile from './components/AvatarProfile';
 import SubjectPath from './components/SubjectPath';
 import BadgeCollection from './components/BadgeCollection';
 import QuizInterface from './components/QuizInterface';
 import { Sparkles } from 'lucide-react';
 
-const App: React.FC = () => {
-  const [user, setUser] = useState<User>(INITIAL_USER);
-  const [activeView, setActiveView] = useState<'map' | 'quiz' | 'badges'>('map');
+const App = () => {
+  const [user, setUser] = useState(INITIAL_USER);
+  const [activeView, setActiveView] = useState('map');
   const [showBadges, setShowBadges] = useState(false);
-  const [lessons, setLessons] = useState<Lesson[]>(LESSONS);
-  const [activeLessonId, setActiveLessonId] = useState<string | null>(null);
+  const [lessons, setLessons] = useState(LESSONS);
+  const [activeLessonId, setActiveLessonId] = useState(null);
 
   // Handle lesson click
-  const handleLessonSelect = (lessonId: string) => {
+  const handleLessonSelect = (lessonId) => {
     setActiveLessonId(lessonId);
     setActiveView('quiz');
   };
 
   // Handle quiz completion
-  const handleQuizComplete = (score: number) => {
+  const handleQuizComplete = (score) => {
     // Simple mock logic for progression
     if (score >= 2) { // Pass threshold
       // Unlock next lesson logic would go here
@@ -31,7 +30,7 @@ const App: React.FC = () => {
         if (l.id === 'lesson-6' && activeLessonId === 'lesson-5') return { ...l, status: 'active' };
         return l;
       });
-      // @ts-ignore
+      
       setLessons(updatedLessons);
       
       // Update User
