@@ -1,14 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Lesson } from '../types';
 import { Star, Trophy, BookOpen, Gamepad2, Lock, Check } from 'lucide-react';
 
-interface SubjectPathProps {
-  lessons: Lesson[];
-  onLessonSelect: (lessonId: string) => void;
-}
-
-const SubjectPath: React.FC<SubjectPathProps> = ({ lessons, onLessonSelect }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+const SubjectPath = ({ lessons, onLessonSelect }) => {
+  const containerRef = useRef(null);
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
@@ -54,7 +48,7 @@ const SubjectPath: React.FC<SubjectPathProps> = ({ lessons, onLessonSelect }) =>
     return d;
   };
 
-  const getIcon = (type: Lesson['type']) => {
+  const getIcon = (type) => {
     switch (type) {
       case 'trophy': return Trophy;
       case 'book': return BookOpen;
@@ -63,7 +57,7 @@ const SubjectPath: React.FC<SubjectPathProps> = ({ lessons, onLessonSelect }) =>
     }
   };
 
-  const getColor = (status: Lesson['status'], type: Lesson['type']) => {
+  const getColor = (status, type) => {
     if (status === 'locked') return 'bg-gray-200 border-gray-300 text-gray-400 shadow-[0_4px_0_#d1d5db]';
     if (status === 'completed') return 'bg-brand-yellow border-yellow-500 text-white shadow-[0_4px_0_#eab308]';
     
