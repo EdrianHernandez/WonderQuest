@@ -1,7 +1,6 @@
-import { Badge, Lesson, Quiz, User } from './types';
 import { Star, Trophy, BookOpen, Gamepad2, Zap, Brain, Rocket, Crown } from 'lucide-react';
 
-export const INITIAL_USER: User = {
+export const INITIAL_USER = {
   name: "Alex",
   avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Alex&backgroundColor=b6e3f4",
   level: 5,
@@ -12,11 +11,11 @@ export const INITIAL_USER: User = {
 
 // Generate a winding path of lessons
 // We simulate a sine wave pattern for positions
-export const LESSONS: Lesson[] = Array.from({ length: 12 }, (_, i) => {
+export const LESSONS = Array.from({ length: 12 }, (_, i) => {
   const isEven = i % 2 === 0;
   // This layout logic will be handled visually in the component, 
   // but we set initial statuses here.
-  let status: Lesson['status'] = 'locked';
+  let status = 'locked';
   if (i < 4) status = 'completed';
   if (i === 4) status = 'active';
 
@@ -30,7 +29,7 @@ export const LESSONS: Lesson[] = Array.from({ length: 12 }, (_, i) => {
   };
 });
 
-export const BADGES: Badge[] = [
+export const BADGES = [
   {
     id: 'b1',
     name: 'Early Bird',
@@ -69,7 +68,7 @@ export const BADGES: Badge[] = [
     icon: 'Crown',
     unlocked: false
   },
-    {
+  {
     id: 'b6',
     name: 'Polyglot',
     description: 'Learn 50 new words',
@@ -78,7 +77,7 @@ export const BADGES: Badge[] = [
   }
 ];
 
-export const MOCK_QUIZ: Quiz = {
+export const MOCK_QUIZ = {
   lessonId: 'lesson-5',
   title: 'Space Explorers',
   questions: [
